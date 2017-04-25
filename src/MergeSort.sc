@@ -15,6 +15,7 @@ object MergeSort {
     }
   }
 
+
   /**
     * Takes the split halves and combines them by looking at each value in the list.
     * @param left half of original list
@@ -29,7 +30,7 @@ object MergeSort {
     case (x,Nil) => left
   }
 
-  val list = List(1,5,456,2,90,33,10,324,7)
+  val list = List(1,5,456,2,90,33,10,324,7,12,11,13)
 
   mergeSort(list)
 
