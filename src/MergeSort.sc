@@ -1,5 +1,9 @@
 object MergeSort {
 
+  val list = List(1,5,456,2,90,33,10,324,7,12,11,13)
+
+  mergeSort(list)
+
   /**
     * Initiates mergesort process. Takes in a list, finds the length, cuts it in half.
     * Then sends each half to be sorted and merged. When both are finished the two
@@ -8,8 +12,8 @@ object MergeSort {
     * @return sorted list
     */
   def mergeSort(list: List[Int]):List[Int] = {
-    if(list.length/2==0) list
-    else{
+    if(list.length/2==0) list //if list is 1,2, or 0 components returns list
+    else{ // else splits it in half and passes each half into the merge helper function
       val(left,right) = list.splitAt(list.length/2)
       merge(mergeSort(left),mergeSort(right))
     }
@@ -24,21 +28,10 @@ object MergeSort {
     */
   def merge(left: List[Int], right: List[Int]):List[Int] = (left,right) match{
     case (x::xs,y::ys) =>
-      if(x>y) y::merge(x::xs,ys)
-      else x::merge(xs,y::ys)
-    case (Nil,y) => right
-    case (x,Nil) => left
+      if(x>y) y::merge(x::xs,ys) // makes y the head of the new list and passes all list x and rest of y
+      else x::merge(xs,y::ys) // makes x the head of the new list and passes rest of x with all of y
+    case (Nil,y) => y // if x is empty returns y
+    case (x,Nil) => x // if y is empty returns x
   }
-
-  val list = List(1,5,456,2,90,33,10,324,7,12,11,13)
-
-  mergeSort(list)
-
-
-
-
-
-
-
 
 }
